@@ -2,6 +2,7 @@
 
 Efficacité d’une Centrale à Cycle Combiné à Gaz. 
 Le but du projet était de réussir grâce au machine learning à concevoir un modèle prédictif pour une certaine variable de la base de données.
+Pour ce projet les modèles de machine learning on été réalisé à partir de SAS. D'ou l'absence des modèles dans le code source.
 
 Etape 1 : Préparation de la base de données (programmation R-Studio)
 - Analyse statistique et descriptive (traitement univarié)
