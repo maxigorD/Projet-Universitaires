@@ -1,4 +1,4 @@
-# Projet-Universitaires
+# Projet : Licence 3 Mathematiques - Techniques Statistiques
 
 Efficacité d’une Centrale à Cycle Combiné à Gaz. 
 Le but du projet était de réussir grâce au machine learning à concevoir un modèle prédictif pour une certaine variable de la base de données.
