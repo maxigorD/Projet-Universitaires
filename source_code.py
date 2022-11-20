@@ -185,7 +185,7 @@ df_suite.head().style.set_properties(subset = ['Date Accident'],
                                      **{'background-color': '#B1C40F'})
 
 
-# Data Visualisation avec Exel 
+# Data Visualisation avec Excel 
 
 # Téléchargement des bonnes données csv pour la visualisation
 
