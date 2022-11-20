@@ -11,7 +11,7 @@ Etape 1 : Préparation de la base de données (programmation R-Studio)
 - Normalisation des données pour les tests et les modèles d'apprentissage.
 - Visualisation des données et analyse poussée des corrélations entre variables. 
 
-Etape 2 : Machine learning (R et SAS).
+Etape 2 : Machine learning (SAS).
 - Tests de plusieurs modèles de régression linéaire simple et multiple. Choix du meilleur modèle prédictif grâce au risque quadratique moyen de chaque modèle.
 - Vérification des résultats obtenus à l'étape 1 grâce à une analyse en composante principale (ACP) .
 - Vérification de l'existence potentielle de différentes classes dans notre base de données grâce à une Classification Ascendante Hiérarchique (CAH).
