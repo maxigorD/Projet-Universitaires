@@ -12,7 +12,7 @@ et lui propose des solutions pour gérer ces incohérences.
 
 Le code source de l'application est disponible dans le fichiers source_code.py
 
-Les données utilisées se trouve en libre accès à cette adresse : https://www.data.gouv.fr/fr/datasets/open-damir-base-complete-sur-les-depenses-dassurance-maladie-inter-regimes/
+Les données utilisées se trouvent en libre accès à cette adresse : https://www.data.gouv.fr/fr/datasets/open-damir-base-complete-sur-les-depenses-dassurance-maladie-inter-regimes/
 
 :star2: Note obtenue après présentation : 19/20 
 
