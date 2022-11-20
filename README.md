@@ -14,6 +14,6 @@ Le code source de l'application est disponible dans le fichiers source_code.py
 
 Les données utilisées se trouve en libre accès à cette adresse : https://www.data.gouv.fr/fr/datasets/open-damir-base-complete-sur-les-depenses-dassurance-maladie-inter-regimes/
 
-:star2: Note Obtenue après présentation : 19/20 
+:star2: Note obtenue après présentation : 19/20 
 
 
