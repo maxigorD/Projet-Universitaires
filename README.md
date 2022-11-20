@@ -1,3 +1,3 @@
-# Projet - Msc Data Management
+# Projet - Msc Data Management (Individuel)
 # Application Streamlit (Python)
 
