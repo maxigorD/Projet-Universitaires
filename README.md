@@ -9,6 +9,8 @@ analyser. De manière dynamique, l'application propose à l'utilisateur de chois
 souhaite apporter au fichier avant l'analyse (gestion des valeurs manquantes ou aberrante).
 L'application est capable également de montrer à l'utilisateur l'incohérence présente dans son fichier
 et lui propose des solutions pour gérer ces incohérences.
+Une fois l'analyse achevée, l'utilisateur peut télécharger au format excel s'il le souhaite les 
+données résultantes de l'analyse
 
 Le code source de l'application est disponible dans le fichiers source_code.py
 
