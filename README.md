@@ -1,2 +1,3 @@
-# Projet-Universitaires
-Ce dépôt contient tous les détails de mes projets universitaires significatifs qui s'articulent autour de la data. Chaque branche du dépôt fait référence à un projet.
+# Projet - Msc Data Management
+# Application Streamlit (Python)
+
