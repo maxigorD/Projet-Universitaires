@@ -6,7 +6,6 @@ from datetime import datetime
 import plotly.express as px
 from io import BytesIO
 from pyxlsb import open_workbook as open_xlsb
-import streamlit as st
 
 ####################### Fonction pour changer la couleur de st.write ############## 
 def write(url):
@@ -74,7 +73,7 @@ if file_gz and file_xls:
             _dataframe_.drop(columns = last_columns_name, axis = 1, inplace = True)
         return _dataframe_
     
-    def read_dataframe(file): # Cette fonction permet de créer et de définir dynamiquement les 6 dataframes
+    def read_dataframe(file): # Cette fonction permet de créer et de définir dynamiquement les n dataframes
         df_chunk = pd.read_csv(file, compression = 'gzip', delimiter = ',', chunksize = 1000000)
         dataframe_number = 0
         len_df_chunk = 0
@@ -193,7 +192,7 @@ if file_gz and file_xls:
             st.write(sentence_11)
             
     def get_month_spent(dataframe) : # Cette fonction me permet pour un dataframe donné de calcule les KPI qui serviront à la visualisation. 
-        ### La colonne qui regroupe les montants des remboursement est PRS_REM_MNT
+        ### La colonne qui regroupe les montants des remboursements est PRS_REM_MNT
         Dépense_global = sum(dataframe.PRS_REM_MNT)
         Dépense_par_secteur = dataframe.groupby(['PRS_PPU_SEC'])['PRS_REM_MNT'].sum().reset_index().rename(columns = {'PRS_PPU_SEC' : 'Secteur', 'PRS_REM_MNT': 'Montant total du rembourement'}).round(2).set_index('Secteur')
         Dépense_par_nature_dassurance = dataframe.groupby(['ASU_NAT'])['PRS_REM_MNT'].sum().reset_index().rename(columns = {'ASU_NAT' : "Type d'assurance", 'PRS_REM_MNT': 'Montant total du rembourement'}).round(2).set_index("Type d'assurance")
@@ -215,6 +214,8 @@ if file_gz and file_xls:
         writer.save()
         processed_data = output.getvalue()
         return processed_data
+
+    # APPLICATION ENTRYPOINT
         
     if 'dataframe_1' not in st.session_state:
         st.session_state.liste = read_dataframe(file_gz)
