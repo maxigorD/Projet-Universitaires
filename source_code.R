@@ -156,20 +156,20 @@ fviz_eig(res.pca, addlabels = TRUE, ylim = c(0, 50), ylab="Diagramme des valeurs
 var <- get_pca_var(res.pca)
 var
 
-# CoordonnÃ©es
+# Coordonnées
 head(var$coord)
-# Cos2: qualitÃ© de rÃ©presentation
+# Cos2: qualité de représentation
 head(var$cos2)
 # Contributions aux composantes principales
 head(var$contrib)
 
-# CoordonnÃ©es des variables
+# Coordonnées des variables
 head(var$coord, 4)
 
 #Pour visualiser les variables
 fviz_pca_var(res.pca, col.var = "black")
 
-#QualitÃ© de reprÃ©sentation
+#Qualité de représentation
 head(var$cos2, 4)
 
 #visualiser le cos2 des variables sur toutes les dimensions 
@@ -178,7 +178,7 @@ corrplot(var$cos2, is.corr=FALSE)
 # Cos2 total des variables sur Dim.1 et Dim.2
 fviz_cos2(res.pca, choice = "var", axes = 1:2)
 
-# Colorer en fonction du cos2: qualitÃ© de reprÃ©sentation
+# Colorer en fonction du cos2: qualité de représentation
 fviz_pca_var(res.pca, col.var = "cos2",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE)
@@ -189,19 +189,19 @@ fviz_pca_var(res.pca, alpha.var = "cos2")
 #Contribution des variables
 head(var$contrib, 5)
 
-#mettre en Ã©vidence les variables les plus contributives pour chaque dimension
+#mettre en évidence les variables les plus contributives pour chaque dimension
 corrplot(var$contrib, is.corr=FALSE)
 
-# Contributions des variables Ã  PC1
+# Contributions des variables à PC1
 fviz_contrib(res.pca, choice = "var", axes = 1, top = 10)
 
-# Contributions des variables Ã  PC2
+# Contributions des variables à  PC2
 fviz_contrib(res.pca, choice = "var", axes = 2, top = 10)
 
 #La contribution totale Ã  PC1 et PC2
 fviz_contrib(res.pca, choice = "var", axes = 1:2, top = 10)
 
-#Mise en Ã©vidence des variables les plus importante
+#Mise en évidence des variables les plus importante
 fviz_pca_var(res.pca, col.var = "contrib",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"))
              
@@ -211,7 +211,7 @@ res.desc$Dim.1
 # Description de la dimension 2
 res.desc$Dim.2
 
-#Classification ascendante hiÃ©rarchique
+#Classification ascendante hiérarchique
 res.pca <- PCA(don, graph = FALSE, ncp=2)
 res.hcpc = HCPC(res.pca)
 
