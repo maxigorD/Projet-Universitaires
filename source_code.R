@@ -1,11 +1,30 @@
 # Sommaire 
 
-1. Analyse descriptive du jeu de données
-2. Analyse des variables du jeu de données 
-3. Analyse de la liaison entre la variable que l’on veut expliquer et les autres variables du jeu de données
-4. Construction de modèles de régressions simples
-5. Construction d’un modèle de régression multiple
-6. ACP suivie d’une CAH
+1. Analyse descriptive du jeu de données - R
+2. Analyse des variables du jeu de données - R
+3. Analyse de la liaison entre la variable que l’on veut expliquer et les autres variables du jeu de données - R
+4. Construction de modèles de régressions simples - SAS
+5. Construction d’un modèle de régression multiple - SAS
+6. ACP suivie d’une CAH - R
+
+
+# chargement des packages nécessaires 
+
+library("Hmisc")
+library("psych")
+library("pastecs")
+library("car")
+library(BioStatR)
+library("sjPlot")
+library("ggpubr")
+library(broom)
+library("openxlsx")
+library("ggpubr")
+library("FactoMineR")
+library("factoextra")
+library("Hmisc")
+library("corrplot")
+library(cluster)
 
 
 #1. Analyse descriptive du jeu de données (taille du jeu de données, type des variables à disposition, observations manquantes/aberrantes..)
@@ -15,20 +34,6 @@
 Data<-read.csv(file="path",header=T,dec=".")
 DATA2<-read.csv(file="path",header=T,dec=".")
 DATA3<-read.csv(file="path",header=T,dec=".")
-
-# chargement des packages nécessaires 
-
-library("Hmisc")
-library("psych")
-library("pastecs")
-library("car")
-install.packages("sjPlot")
-install.packages("BioStatR")
-install.packages("ggpubr")
-library(BioStatR)
-library("sjPlot")
-library("ggpubr")
-library(broom)
 
 # Description globale des donnees 
 
@@ -129,3 +134,84 @@ plot(jitter(DATA$V),jitter(DATA$PE),xlab="Vide d’échappement",ylab="Productio
 plot(jitter(DATA$AP),jitter(DATA$PE),xlab="Pression ambiante",ylab="Production d'énergie")
 plot(jitter(DATA$RH),jitter(DATA$PE),xlab="Humidité relative",ylab="Production d'énergie")
 plot(jitter(DATA$ï..AT),jitter(DATA$PE),xlab="Température Ambiante",ylab="Production d'énergie")
+
+# Chargement de la table obtenue de SAS
+
+don = read.xlsx(xlsxFile="C:/Users/Orlys/Desktop/SAS - Copie/Nouvelle table/NTable 1.xlsx",sheet=1, colNames=TRUE)
+don$V=scale(don$V)
+don$AP=scale(don$AP)
+don$RH=scale(don$RH)
+don$PE=scale(don$PE)
+don$AT=scale(don$AT)
+
+# ACP
+res.pca <- PCA(don, graph = FALSE)
+
+print(res.pca)
+eig.val <- get_eigenvalue(res.pca)
+eig.val
+
+fviz_eig(res.pca, addlabels = TRUE, ylim = c(0, 50), ylab="Diagramme des valeurs propres", xlab="Composante Principale")
+
+var <- get_pca_var(res.pca)
+var
+
+# CoordonnÃ©es
+head(var$coord)
+# Cos2: qualitÃ© de rÃ©presentation
+head(var$cos2)
+# Contributions aux composantes principales
+head(var$contrib)
+
+# CoordonnÃ©es des variables
+head(var$coord, 4)
+
+#Pour visualiser les variables
+fviz_pca_var(res.pca, col.var = "black")
+
+#QualitÃ© de reprÃ©sentation
+head(var$cos2, 4)
+
+#visualiser le cos2 des variables sur toutes les dimensions 
+corrplot(var$cos2, is.corr=FALSE)
+
+# Cos2 total des variables sur Dim.1 et Dim.2
+fviz_cos2(res.pca, choice = "var", axes = 1:2)
+
+# Colorer en fonction du cos2: qualitÃ© de reprÃ©sentation
+fviz_pca_var(res.pca, col.var = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE)
+
+# Changer la transparence en fonction du cos2
+fviz_pca_var(res.pca, alpha.var = "cos2")
+
+#Contribution des variables
+head(var$contrib, 5)
+
+#mettre en Ã©vidence les variables les plus contributives pour chaque dimension
+corrplot(var$contrib, is.corr=FALSE)
+
+# Contributions des variables Ã  PC1
+fviz_contrib(res.pca, choice = "var", axes = 1, top = 10)
+
+# Contributions des variables Ã  PC2
+fviz_contrib(res.pca, choice = "var", axes = 2, top = 10)
+
+#La contribution totale Ã  PC1 et PC2
+fviz_contrib(res.pca, choice = "var", axes = 1:2, top = 10)
+
+#Mise en Ã©vidence des variables les plus importante
+fviz_pca_var(res.pca, col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"))
+             
+res.desc <- dimdesc(res.pca, axes = c(1,2), proba = 0.05)
+# Description de la dimension 1
+res.desc$Dim.1
+# Description de la dimension 2
+res.desc$Dim.2
+
+#Classification ascendante hiÃ©rarchique
+res.pca <- PCA(don, graph = FALSE, ncp=2)
+res.hcpc = HCPC(res.pca)
+
