@@ -1,6 +1,5 @@
-# Projet - Universitaire
+# Tableau - Data Viz
 
-Ce dépôt contient tous les détails de mes projets universitaires significatifs qui s'articulent autour de la data. 
-Chaque branche du dépôt fait référence à un projet.
+Le fichier script.py contient le code de préparation de la table utilisé pour la visualisation des données avec tableau
 
 
